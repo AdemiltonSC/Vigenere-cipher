@@ -9,7 +9,7 @@
 
 # User Stories
 
-    - [] check User can see the app window with these components:
+    [+]check User can see the app window with these components:
         Plain text message input field
         Encryption key input field
         Action buttons - 'Encrypt' and 'Decrypt'
