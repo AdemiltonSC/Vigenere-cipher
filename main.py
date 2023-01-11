@@ -1,13 +1,14 @@
+from tkinter import *
 # vigenere  cipher
 
-def main():
+def cli():
     alpha_map = [
         'a', 'b', 'c', 'd', 'e', 'f', 'g',
         'h', 'i', 'j', 'k', 'l', 'm', 'n',
         'o', 'p', 'q', 'r', 's', 't', 'u',
         'v', 'w', 'x', 'y', 'z'
         ]
-            
+
     msg = input("Digite a cifra ou a mensagem a ser cifrada:").lower()
     key = input("Digite a Chave de Encriptação: ").lower()    
     resp = int(input("encriptar(1) ou desencriptar(0): "))
@@ -41,5 +42,25 @@ def main():
     print(msg2)
 
 
+
+class app:
+    def __init__(self, master=None):
+        root = Tk()
+        root.title("Vigenere Cipher")
+        root.geometry("500x750+30+30")
+        row1 = Frame(root)
+        row2 = Frame(root)
+        row3 = Frame(root)
+        row4 = Frame(root)
+
+        row1.pack()
+        row2.pack()
+        row3.pack()
+        row4.pack()
+
+        root.mainloop()
+    
+
 if __name__ == "__main__":
-    main()
+    app()
+    
