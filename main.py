@@ -63,35 +63,44 @@ class app:
         self.row4 = Frame(self.root, height=100)
         self.row4.pack_propagate(0)
 
-        self.row1.pack(pady=(50,0), fill="both")
-        self.row2.pack(fill="both")
-        self.row3.pack(fill="both")
-        self.row4.pack(fill="both")
+        # Container position
+        self.row1.pack(pady=(50, 0), fill="both")
+        self.row2.pack(pady=(25, 0), fill="both")
+        self.row3.pack(pady=(25, 0), fill="both")
+        self.row4.pack(pady=(25, 0), fill="both")
 
         # Mensagem
-        self.msgV = StringVar(self.root, value="Sua mensagem")
-        self.msg = Entry(self.row1, font=("verdana", 20))
-        self.msg.pack()
+        self.msgV = StringVar(self.root, "Sua mensagem: ")
+        self.msg = Entry(self.row1, font=("verdana", 20), textvariable=self.msgV)
+        self.msg.bind("<FocusIn>", self.handle_focus)
 
         # Key
-        self.keyV = StringVar(self.root, value="key")
-        self.key = Entry(self.row2, font=("verdana", 20))
-        self.key.pack()
+        self.keyV = StringVar(self.root, value="Sua key")
+        self.key = Entry(self.row2, font=("verdana", 20), textvariable=self.keyV)
+        self.key.bind("<FocusIn>", self.handle_focus)
         
-        # Encriptar ou Decriptar
-        self.btn = Button(self.row3)
-        self.btn.grid(row=0, column=1, sticky="WE")
-
+        # Encriptar ou Decriptar Buttons
+        self.btn = Button(self.row3, text="oi")
         self.btn2 = Button(self.row3)
-        self.btn2.grid(row=0, column=2, sticky="WE")
         
         # Mensagem 2
         self.msg2V = StringVar(self.root, value="Criptado")
         self.msg2 = Entry(self.row4, font=("verdana", 20))
-        self.msg2.pack()        
+
+        # Position/ Packing
+        self.msg.pack(expand="true")
+        self.key.pack(expand="true")
+        self.btn.grid(row=0, column=0, sticky="WE", padx=(50,5))
+        self.btn2.grid(row=0, column=1, sticky="WE", padx=(5, 50))
+        self.msg2.pack(expand="true")
 
         self.root.mainloop()
     
+    def handle_focus(self, event):
+        if event.widget == self.msg:
+            self.msgV.set("")
+        if event.widget == self.key:
+            self.keyV.set("")
 
 if __name__ == "__main__":
     app()
